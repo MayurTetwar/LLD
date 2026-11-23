@@ -1,4 +1,4 @@
-package Design.LLD.Solid_Principle;
+package Solid_Principle;
 
 
 // Separate interface for 2D shapes

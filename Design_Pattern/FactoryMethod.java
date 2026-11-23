@@ -1,4 +1,4 @@
-package Design.LLD.Design_Pattern;
+package Design_Pattern;
 
 // Product Interface and subclasses
 interface Burger {

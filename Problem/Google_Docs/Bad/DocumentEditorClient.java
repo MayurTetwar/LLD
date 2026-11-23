@@ -1,4 +1,4 @@
-package Design.LLD.Google_Docs.Bad;
+package Problem.Google_Docs.Bad;
 
 import java.io.FileWriter;
 import java.io.IOException;

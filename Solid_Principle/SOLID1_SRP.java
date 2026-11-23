@@ -1,4 +1,4 @@
-package Design.LLD.Solid_Principle;
+package Solid_Principle;
 import java.util.ArrayList;
 import java.util.List;
 

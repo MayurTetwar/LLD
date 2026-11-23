@@ -1,4 +1,4 @@
-package Design.LLD.Design_Pattern;
+package Design_Pattern;
 
 // --- Strategy Interface for Walk ---
 interface WalkableRobot {

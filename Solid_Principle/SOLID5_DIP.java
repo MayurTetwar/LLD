@@ -1,4 +1,4 @@
-package Design.LLD.Solid_Principle;
+package Solid_Principle;
 
 // Abstraction (Interface)
 interface Database {
