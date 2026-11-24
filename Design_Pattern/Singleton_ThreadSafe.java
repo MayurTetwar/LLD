@@ -27,6 +27,24 @@ public class Singleton_ThreadSafe {
     }
 }
 /*
+// Bill Pugh holder
+class AppConfig {
+    private AppConfig() { }
+
+    private static class Holder {
+        static final AppConfig INSTANCE = new AppConfig();
+    }
+
+    static AppConfig getInstance() { return Holder.INSTANCE; }
+}
+The Holder class loads only when getInstance() is first called, and the JVM guarantees class 
+loading is thread-safe. You get lazy creation with no synchronized and no volatile.
+*/
+
+/* ----------------------------------------------------------------------------------------------- */
+
+/*
+// Eager initialization
 // Fast Initilization but more cpu and memory useage
 
 public class ThreadSafeEagerSingleton {
