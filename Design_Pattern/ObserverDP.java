@@ -94,3 +94,77 @@ public class ObserverDP {
     }
 }
 
+/*
+Other type of uml and code (ig this is good):- 
++----------------------+  has many   +-------------------------+
+|  Subject             | ──────────▶ | <<interface>> Observer  |
+| + subscribe(o)       |             | + update(...)           |
+| + unsubscribe(o)     |             +-------------------------+
+| + notifyObservers()  |                   ▲          ▲
++----------------------+                   ┆          ┆
+                                      ObserverA   ObserverB
+
+                                      
+import java.util.*;
+
+interface OrderObserver {
+    void onStatusChanged(String orderId, String newStatus);
+}
+
+class Order {                                        // the subject
+    private final String id;
+    private String status = "PLACED";
+    private final List<OrderObserver> observers = new ArrayList<>();
+
+    Order(String id) { this.id = id; }
+
+    void subscribe(OrderObserver o)   { observers.add(o); }
+    void unsubscribe(OrderObserver o) { observers.remove(o); }
+
+    void setStatus(String newStatus) {
+        this.status = newStatus;
+        notifyObservers();
+    }
+
+    private void notifyObservers() {
+        for (OrderObserver o : observers) {
+            o.onStatusChanged(id, status);
+        }
+    }
+}
+
+class EmailNotifier implements OrderObserver {
+    public void onStatusChanged(String id, String status) {
+        System.out.println("Email: order " + id + " is " + status);
+    }
+}
+
+class SmsNotifier implements OrderObserver {
+    public void onStatusChanged(String id, String status) {
+        System.out.println("SMS: order " + id + " is " + status);
+    }
+}
+
+class AnalyticsTracker implements OrderObserver {
+    public void onStatusChanged(String id, String status) {
+        System.out.println("Analytics: " + id + " -> " + status);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Order order = new Order("ORD-1");
+        OrderObserver sms = new SmsNotifier();
+
+        order.subscribe(new EmailNotifier());
+        order.subscribe(sms);
+        order.subscribe(new AnalyticsTracker());
+
+        order.setStatus("SHIPPED");     // all three react
+
+        order.unsubscribe(sms);         // customer turns SMS off
+        order.setStatus("DELIVERED");   // only two react
+    }
+
+*/
+
